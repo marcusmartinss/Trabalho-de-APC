@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Função do layout do menu principal do programa.
 int menu(int repeat)
 {
     int num_menu;
@@ -72,46 +73,64 @@ int menu(int repeat)
     } while (repeat == 1);
 }
 
+
+// Função Cadastrar voo.
 int cadastrar_voo()
 {
  return 0;
 }
 
+
+// Função Cadastrar reserva.
 int cadastrar_reserva()
 {
  return 0;
 }
 
+
+// Função Consultar voo.
 int consultar_voo()
 {
  return 0;
 }
 
+
+// Função Consultar reserva.
 int consultar_reserva()
 {
  return 0;
 }
 
+
+// Função Consultar passageiro.
 int consultar_passageiro()
 {
  return 0;
 }
 
+
+// Função Cancelar voo.
 int cancelar_voo()
 {
  return 0;
 }
 
+
+// Função Cancelar reserva.
 int cancelar_reserva()
 {
  return 0;
 }
 
+
+// Função Excluir voo.
 int excluir_voo()
 {
  return 0;
 }
 
+
+// Função principal do programa.
 int main()
 {
     FILE *teste;
