@@ -1,15 +1,17 @@
 #include <stdio.h>
+#include <locale.h>
 
 // Função do layout do menu principal do programa.
 int menu(int repeat)
-{
+{   
+    setlocale(LC_ALL, "Portuguese");
     int num_menu;
 
     do
     {
         printf("     ______________________________________\n");
         printf("    |            Galactic Birds            |\n");
-        printf("    |    'Sua confianca sob nossas asas'   |\n");
+        printf("    |    'Sua confiança sob nossas asas'   |\n");
         printf("    |--------------------------------------|\n");
         printf("    | Menu de reservas espaciais           |\n");
         printf("    |--------------------------------------|\n");
@@ -31,53 +33,90 @@ int menu(int repeat)
         {
             case 1:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 2: 
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 3:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 4:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 5:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 6:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 7:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 8:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             case 9:
                 repeat = 0;
+                system("cls");
                 return num_menu;
                 break;
             default:
+                system("cls");
                 printf("\n\n            ERRO: Valor invalido!\n\n");
                 repeat = 1;
         }
 
     } while (repeat == 1);
+
+ return num_menu;
 }
 
 
 // Função Cadastrar voo.
-int cadastrar_voo()
+void cadastrar_voo()
 {
- return 0;
+    FILE *arquivo;
+    DATA data_voo;
+
+    arquivo = fopen("dados_GalaticBirds.bin", "a+b");
+
+    if (arquivo == NULL)
+    {
+        printf("ERRO! Não foi possível ler os dados.\n");
+    }
+    else
+    {   
+        fflush(stdin);
+        printf("     ______________________________________\n");
+        printf("    |            Galactic Birds            |\n");
+        printf("    |    'Sua confianca sob nossas asas'   |\n");
+        printf("    |--------------------------------------|\n");
+        printf("    | Cadastrar voo                        |\n");
+        printf("    |______________________________________|\n");
+        printf("             Insira a data do voo:\n");
+        printf("                    "); ("%d/%d/%d", &data_voo.dia, &data_voo.mes, &data_voo.ano);
+
+        fclose(arquivo);
+
+    }
+    
+    system("cls");
 }
 
 
@@ -129,12 +168,19 @@ int excluir_voo()
  return 0;
 }
 
+typedef struct data DATA;
+struct data
+{
+    int dia;
+    int mes;
+    int ano;
+};
 
 // Função principal do programa.
 int main()
 {
-    FILE *teste;
-    
+    setlocale(LC_ALL, "Portuguese");
+
     int num_menu, repeat = 1;
 
     do
