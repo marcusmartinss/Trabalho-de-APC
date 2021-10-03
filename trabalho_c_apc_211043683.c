@@ -87,7 +87,7 @@ int menu(int repeat)
 }
 
 // Função Cadastrar voo.
-void cadastrar_voo(FILE *arquivo, int repeat)
+void cadastrar_voo(int repeat)
 {
     FILE *arquivo;
     DATA data_voo;
