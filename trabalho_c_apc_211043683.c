@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
 typedef struct data DATA;
 struct data
@@ -8,6 +7,17 @@ struct data
     int dia;
     int mes;
     int ano;
+};
+
+typedef struct voo VOO;
+struct voo
+{
+    char num_voo[9];
+    int  max_passageiros;
+    int  dia;
+    int  mes;
+    int  ano;
+    int  status;
 };
 
 // Função do layout do menu principal do programa.
@@ -92,6 +102,7 @@ void cadastrar_voo(int repeat)
 {
     FILE *arquivo;
     DATA data_voo;
+    VOO  voo;
 
     char separador[3];
 
@@ -99,17 +110,74 @@ void cadastrar_voo(int repeat)
 
     arquivo = fopen("dados_GalaticBirds.dat", "a+b");
 
-    do
-    {    
+    system("cls");
 
-        if (arquivo == NULL)
+    if (arquivo == NULL)
+    {
+        printf("    ERRO! Nao foi possivel ler os dados.\n");
+        exit(1);
+    }
+    else
+    {  
+        do
         {
-            printf("ERRO! Nao foi possivel ler os dados.\n");
-            exit(1);
-        }
-        else
-        {   
             fflush(stdin);
+            printf("     ______________________________________\n");
+            printf("    |            Galactic Birds            |\n");
+            printf("    |    'Sua confianca sob nossas asas'   |\n");
+            printf("    |--------------------------------------|\n");
+            printf("    | Cadastrar voo                        |\n");
+            printf("    |______________________________________|\n\n");
+
+            printf("             Insira o número do voo:\n");
+            printf("                  "); scanf( "%s", &voo.num_voo[9]);
+
+            if (voo.num_voo[0] != 'J' || voo.num_voo[1] != 'E' || voo.num_voo[2] != 'B' || voo.num_voo[3] != '-' || (voo.num_voo[4] < '0' || voo.num_voo[4] > '9') || (voo.num_voo[5] < '0' || voo.num_voo[5] > '9') || (voo.num_voo[6] < '0' || voo.num_voo[6] > '9') || (voo.num_voo[7] < '0' || voo.num_voo[7] > '9') || (voo.num_voo[8] != '\0' ))
+            {
+                repeat = 1;
+                system("cls");
+                printf("\n    ERRO! Formato do numero de voo incorreto.\n");
+            }
+            else
+            {
+                repeat = 0;
+                do
+                {
+                    system("cls");
+
+                    printf("     ______________________________________\n");
+                    printf("    |            Galactic Birds            |\n");
+                    printf("    |    'Sua confianca sob nossas asas'   |\n");
+                    printf("    |--------------------------------------|\n");
+                    printf("    | Cadastrar voo                        |\n");
+                    printf("    |______________________________________|\n\n");
+
+                    printf("   Insira a capacidade maxima de passageiros:\n");
+                    printf("                      "); scanf("%d", &voo.max_passageiros);
+
+                    if (voo.max_passageiros < 20 || voo.max_passageiros > 100)
+                    {
+                        repeat = 1;
+                        system("cls");
+                        printf("\n    ERRO! O valor inserido não é permitido.\n");
+                    }
+                    else
+                    {
+                        system("cls");
+
+                        printf("     ______________________________________\n");
+                        printf("    |            Galactic Birds            |\n");
+                        printf("    |    'Sua confianca sob nossas asas'   |\n");
+                        printf("    |--------------------------------------|\n");
+                        printf("    | Cadastrar voo                        |\n");
+                        printf("    |______________________________________|\n\n");
+
+                        printf("             Insira a data do voo:\n");
+                    }
+                }while(repeat == 1);
+            }
+        }while(repeat = 1);
+                    
             printf("     ______________________________________\n");
             printf("    |            Galactic Birds            |\n");
             printf("    |    'Sua confianca sob nossas asas'   |\n");
@@ -182,9 +250,8 @@ void cadastrar_voo(int repeat)
 
         } 
 
-    } while(repeat == 1);
-    system("cls");
 }
+
 
 
 // Função Cadastrar reserva.
