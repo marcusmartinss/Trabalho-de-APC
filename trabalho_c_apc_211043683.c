@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct data DATA;
 struct data
@@ -12,7 +13,7 @@ struct data
 typedef struct voo VOO;
 struct voo
 {
-    char num_voo[9];
+    char num_voo[8];
     int  max_passageiros;
     int  dia;
     int  mes;
@@ -101,8 +102,7 @@ int menu(int repeat)
 void cadastrar_voo(int repeat)
 {
     FILE *arquivo;
-    DATA data_voo;
-    VOO  voo;
+    VOO   voo;
 
     char separador[3];
 
@@ -121,7 +121,6 @@ void cadastrar_voo(int repeat)
     {  
         do
         {
-            fflush(stdin);
             printf("     ______________________________________\n");
             printf("    |            Galactic Birds            |\n");
             printf("    |    'Sua confianca sob nossas asas'   |\n");
@@ -129,22 +128,15 @@ void cadastrar_voo(int repeat)
             printf("    | Cadastrar voo                        |\n");
             printf("    |______________________________________|\n\n");
 
-            printf("             Insira o número do voo:\n");
-            printf("                  "); scanf( "%s", &voo.num_voo[9]);
+            printf("             Insira o numero do voo:\n");
+            printf("                  "); scanf( "%s", voo.num_voo);
 
-            if (voo.num_voo[0] != 'J' || voo.num_voo[1] != 'E' || voo.num_voo[2] != 'B' || voo.num_voo[3] != '-' || (voo.num_voo[4] < '0' || voo.num_voo[4] > '9') || (voo.num_voo[5] < '0' || voo.num_voo[5] > '9') || (voo.num_voo[6] < '0' || voo.num_voo[6] > '9') || (voo.num_voo[7] < '0' || voo.num_voo[7] > '9') || (voo.num_voo[8] != '\0' ))
-            {
-                repeat = 1;
-                system("cls");
-                printf("\n    ERRO! Formato do numero de voo incorreto.\n");
-            }
-            else
+            if (voo.num_voo[0] == 'J' && voo.num_voo[1] == 'E' && voo.num_voo[2] == 'B' && voo.num_voo[3] == '-' && (voo.num_voo[4] >= '0' && voo.num_voo[4] <= '9') && (voo.num_voo[5] >= '0' && voo.num_voo[5] <= '9') && (voo.num_voo[6] >= '0' && voo.num_voo[6] <= '9') && (voo.num_voo[7] >= '0' && voo.num_voo[7] <= '9'))
             {
                 repeat = 0;
                 do
                 {
                     system("cls");
-
                     printf("     ______________________________________\n");
                     printf("    |            Galactic Birds            |\n");
                     printf("    |    'Sua confianca sob nossas asas'   |\n");
@@ -173,86 +165,99 @@ void cadastrar_voo(int repeat)
                         printf("    |______________________________________|\n\n");
 
                         printf("             Insira a data do voo:\n");
-                    }
-                }while(repeat == 1);
-            }
-        }while(repeat = 1);
-                    
-            printf("     ______________________________________\n");
-            printf("    |            Galactic Birds            |\n");
-            printf("    |    'Sua confianca sob nossas asas'   |\n");
-            printf("    |--------------------------------------|\n");
-            printf("    | Cadastrar voo                        |\n");
-            printf("    |______________________________________|\n\n");
+                        printf("                  "); scanf( "%d%c%d%c%d", &voo.dia, &separador[0], &voo.mes, &separador[1], &voo.ano);
 
-            printf("             Insira a data do voo:\n");
-            printf("                  "); scanf( "%d%c%d%c%d", &data_voo.dia, &separador[0],         &data_voo.mes, &separador[1], &data_voo.ano);
-
-            if ((separador[0] == '/' && separador[1] == '/') || (separador[0] == '/' && separador[1] == '/'))
-            {
-                if(data_voo.ano >= 2030 && data_voo.ano <= 2032)
-                {
-                    if (data_voo.mes >= 1 && data_voo.mes <= 12)
-                    {
-                        if ((data_voo.dia >= 1 && data_voo.dia <= 31) && (data_voo.mes == 1 || data_voo.mes == 3 || data_voo.mes == 5 || data_voo.mes == 7 || data_voo.mes == 8 || data_voo.mes == 10 || data_voo.mes == 12))
+                        if ((separador[0] == '/' && separador[1] == '/') || (separador[0] == '-' && separador[1] == '-'))
                         {
-                            repeat = 0;
-                            fwrite(&data_voo.dia, sizeof(int), 1, arquivo);
-                            fwrite(&data_voo.mes, sizeof(int), 1, arquivo);
-                            fwrite(&data_voo.ano, sizeof(int), 1, arquivo);
-                        }
-                        else
-                        {
-                            if ((data_voo.dia <= 28 & data_voo.dia <= 30) && (data_voo.mes == 4 || data_voo.mes == 6 || data_voo.mes == 9 || data_voo.mes == 11))
+                            if(voo.ano >= 2030 && voo.ano <= 2032)
                             {
-                                repeat = 0;
-                                fwrite(&data_voo.dia, sizeof(int), 1, arquivo);
-                                fwrite(&data_voo.mes, sizeof(int), 1, arquivo);
-                                fwrite(&data_voo.ano, sizeof(int), 1, arquivo);
-                            }
-                            else
-                            {
-                                if (data_voo.dia <= 28 && data_voo.mes == 2)
+                                if (voo.mes >= 1 && voo.mes <= 12)
                                 {
-                                    repeat = 0;
-                                    fwrite(&data_voo.dia, sizeof(int), 1, arquivo);
-                                    fwrite(&data_voo.mes, sizeof(int), 1, arquivo);
-                                    fwrite(&data_voo.ano, sizeof(int), 1, arquivo);
-                                }
-                                else
-                                {
-                                    if ((data_voo.dia == 29 && data_voo.mes == 2) && ((data_voo.ano % 400 == 0) || (data_voo.ano % 4 == 0 && data_voo.ano % 100 != 0)))
+                                    if ( (voo.dia >= 1 && voo.dia <= 31) && (voo.mes == 1 || voo.mes == 3 || voo.mes == 5 || voo.mes == 7 || voo.mes == 8 || voo.mes == 10 || voo.mes == 12) )
                                     {
                                         repeat = 0;
-                                        fwrite(&data_voo.dia, sizeof(int), 1, arquivo);
-                                        fwrite('/', sizeof(char), 1, arquivo);
-                                        fwrite(&data_voo.mes, sizeof(int), 1, arquivo);
-                                        fwrite('/', sizeof(char), 1, arquivo);
-                                        fwrite(&data_voo.ano, sizeof(int), 1, arquivo);
+                                        voo.status = 1;
+                                        fflush(stdin);
+                                        fwrite(&voo, sizeof(voo), 1, arquivo);
+                                        fclose(arquivo);
                                     }
                                     else
                                     {
-                                        system("cls");
-                                        printf("\n ERRO! A data inserida está incorreta.\n\n");
-                                        repeat = 1;
-                                    }   
-                                }   
-                            }       
+                                        if( (voo.dia <= 30) && (voo.mes == 4 || voo.mes == 6 || voo.mes == 9 || voo.mes == 11) ) 
+                                        {
+                                            repeat = 0;
+                                            voo.status = 1;
+                                            fflush(stdin);
+                                            fwrite(&voo, sizeof(voo), 1, arquivo);
+                                            fclose(arquivo);
+                                            system("cls");
+                                        }
+                                        else
+                                        {
+                                            if (voo.dia <= 28 && voo.mes == 2)
+                                            {
+                                                repeat = 0;
+                                                voo.status = 1;
+                                                fflush(stdin);
+                                                fwrite(&voo, sizeof(voo), 1, arquivo);
+                                                fclose(arquivo);
+                                                system("cls");
+                                            }
+                                            else
+                                            {
+                                                if ((voo.dia == 29 && voo.mes == 2) && ((voo.ano % 400 == 0) || (voo.ano % 4 == 0 && voo.ano % 100 != 0)))
+                                                {
+                                                    repeat = 0;
+                                                    voo.status = 1;
+                                                    fflush(stdin);
+                                                    fwrite(&voo, sizeof(voo), 1, arquivo);
+                                                    fclose(arquivo);
+                                                    system("cls");
+                                                }
+                                                else
+                                                {
+                                                    repeat = 1;
+                                                    system("cls");
+                                                    printf("    \nERRO! A data inserida esta incorreta.\n\n");
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    repeat = 1;
+                                    system("cls");
+                                    printf("\n   ERRO! O mes inserido nao existe.\n\n");
+                                }
+                            }
+                            else
+                            {
+                                repeat = 1;
+                                system("cls");
+                                printf("\n   ERRO! Nao eh possivel inserir\n   cadastrar um voo neste ano.\n\n");
+                            }
+                        }
+                        else
+                        {
+                            repeat = 1;
+                            system("cls");
+                            printf("\nERRO! A formato da data inserida esta incorreto.\n\n");
                         }
                     }
-                }
+                }while(repeat == 1);
             }
             else
             {
+                repeat = 1;
                 system("cls");
-                printf("\nERRO! O formato inserido está incorreto.\n\n");
+                printf("\n    ERRO! Formato do numero de voo incorreto.\n");
             }
-
-        } 
+            
+        }while(repeat == 1);
+    }
 
 }
-
-
 
 // Função Cadastrar reserva.
 int cadastrar_reserva()
@@ -322,29 +327,38 @@ int main()
             {
                 case 1:
                     cadastrar_voo(repeat);
+                    system("cls");
                     break;
                 case 2:
                     cadastrar_reserva();
+                    system("cls");
                     break;
                 case 3:
                     consultar_voo();
+                    system("cls");
                     break;
                 case 4:
                     consultar_reserva();
+                    system("cls");
                     break;
                 case 5:
                     consultar_passageiro();
+                    system("cls");
                     break;
                 case 6:
                     cancelar_voo();
+                    system("cls");
                     break;
                 case 7:
                     cancelar_reserva();
+                    system("cls");
                     break;
                 case 8:
                     excluir_voo();
+                    system("cls");
                     break;
             }
+
         }
     }
     while(repeat == 1);
