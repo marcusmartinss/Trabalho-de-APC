@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 typedef struct data DATA;
 struct data
@@ -131,6 +132,8 @@ void cadastrar_voo(int repeat)
             printf("             Insira o numero do voo:\n");
             printf("                  "); scanf( "%s", voo.num_voo);
 
+            strupr(voo.num_voo);
+
             if (voo.num_voo[0] == 'J' && voo.num_voo[1] == 'E' && voo.num_voo[2] == 'B' && voo.num_voo[3] == '-' && (voo.num_voo[4] >= '0' && voo.num_voo[4] <= '9') && (voo.num_voo[5] >= '0' && voo.num_voo[5] <= '9') && (voo.num_voo[6] >= '0' && voo.num_voo[6] <= '9') && (voo.num_voo[7] >= '0' && voo.num_voo[7] <= '9'))
             {
                 repeat = 0;
@@ -190,7 +193,6 @@ void cadastrar_voo(int repeat)
                                             fflush(stdin);
                                             fwrite(&voo, sizeof(voo), 1, arquivo);
                                             fclose(arquivo);
-                                            system("cls");
                                         }
                                         else
                                         {
@@ -201,7 +203,6 @@ void cadastrar_voo(int repeat)
                                                 fflush(stdin);
                                                 fwrite(&voo, sizeof(voo), 1, arquivo);
                                                 fclose(arquivo);
-                                                system("cls");
                                             }
                                             else
                                             {
@@ -212,7 +213,6 @@ void cadastrar_voo(int repeat)
                                                     fflush(stdin);
                                                     fwrite(&voo, sizeof(voo), 1, arquivo);
                                                     fclose(arquivo);
-                                                    system("cls");
                                                 }
                                                 else
                                                 {
@@ -267,8 +267,9 @@ int cadastrar_reserva()
 
 
 // Função Consultar voo.
-int consultar_voo()
+int consultar_voo(int repeat)
 {
+ 
  return 0;
 }
 
@@ -334,7 +335,7 @@ int main()
                     system("cls");
                     break;
                 case 3:
-                    consultar_voo();
+                    consultar_voo(repeat);
                     system("cls");
                     break;
                 case 4:
