@@ -2,16 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(){
+char menu_consultarvoo2()
+{
+    char opcao_consult;
+    fflush(stdin);
+    printf("     ______________________________________\n");
+    printf("    |            Galactic Birds            |\n");
+    printf("    |    'Sua confianca sob nossas asas'   |\n");
+    printf("    |--------------------------------------|\n");
+    printf("    | Consultar voo                        |\n");
+    printf("    |--------------------------------------|\n");
+    printf("    | 1) Consultar por nome                |\n");
+    printf("    | 2) Consultar por CPF                 |\n");
+    printf("    |______________________________________|\n\n");
 
-    char palavra1[50] = {"bola"}; // \0
-    char palavra2[50] = {"abacate"};
+    printf("               Digite sua opcao: \n");
+    printf("                       "); opcao_consult = getchar();
 
-    printf("\nAntes de copiar:\npalavra 1: %s\npalavra2: %s\n", palavra1, palavra2);
+ return opcao_consult;
+}
 
-    strcpy(palavra2, palavra1);
+int main()
+{
+    printf("%c\n", menu_consultarvoo2());
 
-    printf("\nDepois de copiar:\npalavra 1: %s\npalavra2: %s\n", palavra1, palavra2);
-
-    return 0;
+ return 0;
 }
