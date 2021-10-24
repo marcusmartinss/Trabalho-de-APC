@@ -28,6 +28,7 @@ int main()
     while( fread( &dados_voo, sizeof( dados_voo ), 1,  ler_voo ) )
     {
         printf("%s\n", dados_voo.num_voo);
+        printf("%d\n", dados_voo.max_passageiros);
         printf("%d/%d/%d\n", dados_voo.dia, dados_voo.mes, dados_voo.ano);
         printf("%d:%d\n", dados_voo.horas, dados_voo.minutos);
         printf("%d\n\n", dados_voo.status_voo);
