@@ -101,39 +101,6 @@ void menu_consultar_passageiro1() // Cabecalho usado durante a consulta de uma r
     printf("    |______________________________________|\n\n");                      
 }
 
-/*  char menu_consultar_passageiro2(int repeat) // Menu de escolha para qual modo sera consultado um passageiro
-    {
-        char opcao_consult;
-        do
-        {
-            repeat = 0;
-            
-            printf("     ______________________________________\n");
-            printf("    |            Galactic Birds            |\n");
-            printf("    |    'Sua confianca sob nossas asas'   |\n");
-            printf("    |--------------------------------------|\n");
-            printf("    | Consultar passageiro                 |\n");
-            printf("    |--------------------------------------|\n");
-            printf("    | 1) Consultar por nome                |\n");
-            printf("    | 2) Consultar por CPF                 |\n");
-            printf("    |______________________________________|\n\n");
-
-            printf("               Digite sua opcao: \n");     
-            printf("                       "); scanf(" %c", &opcao_consult);
-
-            if(opcao_consult != '1' && opcao_consult != '2')
-            {
-                repeat = 1;
-                system("cls");
-                printf("\n              ERRO! Opcao invalida.\n");
-            }
-
-        }while(repeat == 1);
-
-    return opcao_consult;
-    }
-*/
-
 void menu_cancelarvoo() // Cabecalho para o cancelamento dos voos
 {
     printf("     ______________________________________\n");
@@ -144,7 +111,7 @@ void menu_cancelarvoo() // Cabecalho para o cancelamento dos voos
     printf("    |______________________________________|\n\n");
 }
 
-void menu_cancelarreserva()
+void menu_cancelarreserva() // Cabecalho para cancelamento de reservas
 {
     printf("     ______________________________________\n");
     printf("    |            Galactic Birds            |\n");
@@ -154,7 +121,7 @@ void menu_cancelarreserva()
     printf("    |______________________________________|\n\n");;
 }
 
-void menu_excluirvoo()
+void menu_excluirvoo() // Cabecalho para exclusao de voos
 {
     printf("     ______________________________________\n");
     printf("    |            Galactic Birds            |\n");
@@ -165,7 +132,7 @@ void menu_excluirvoo()
 }
 
 
-// Funcao do layout do menu principal do programa.
+// Cabecalho do menu principal do programa.
 char menu(int repeat)
 {
     char num_menu;
@@ -201,39 +168,39 @@ char menu(int repeat)
             switch (num_menu)
             {
                 case '1':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '2':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '3':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '4':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '5':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '6':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '7':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '8':
-                    system("cls");
+                    system("cls || clear");
                     repeat = 0;
                     break;
                 case '9':
-                    system("cls");
+                    system("cls || clear");
                     printf("\n\n    Obrigado pela preferencia, volte sempre!\n");
                     repeat = 0;
                     break;
@@ -242,8 +209,8 @@ char menu(int repeat)
         else
         {
             repeat = 1;
-            system("cls");
-            printf("\n             ERRO: Valor invalido!");
+            system("cls || clear");
+            printf("\n             ERRO! Valor invalido!");
         }
     }while(repeat == 1);
 
@@ -268,17 +235,18 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
     existe = 0;
     repeat = 1;
 
-    system("cls");
+    system("cls || clear");
 
     if (ler_voo == NULL || add_voo == NULL)
     {
+        system("cls || clear");
         printf("\n     ERRO! Nao foi possivel ler os dados.\n");
         menu_cadastrarvoo();
         exit(1);
     }
     else
     {
-        system("cls");
+        system("cls || clear");
         do
         {
             repeat = 0;
@@ -288,7 +256,7 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
             printf("       Insira o numero do voo (JEB-XXXX):\n");
             fflush(stdin);
             printf("                  "); scanf("%[^\n]s", num_voo);
-            system("cls");
+            system("cls || clear");
 
             strupr(num_voo); // Nomes, numeros de voo e reserva serao sempre todos maiusculos para facilitar a padronizacao e verificacao
             existe = 0;
@@ -308,7 +276,7 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
 
                 if ( existe == 1 ) // Se for repetido, e pedido um novo numero
                 {
-                    system("cls");
+                    system("cls || clear");
                     repeat = 1;
                     printf("\n     ERRO! Este numero de voo ja existe.\n");
 
@@ -322,20 +290,20 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
                         repeat = 0;
 
                         menu_cadastrarvoo();
-                        printf("    Insira a capacidade maxima de passageiros:\n");
+                        printf("    Insira a capacidade maxima de passageiros:\n              (Min: 20 / Max: 100)\n");
                         fflush(stdin);
                         printf("                      "); scanf("%d[^\n]", &escrever_dados_voo.max_passageiros);
 
                         if ( escrever_dados_voo.max_passageiros < 20 || escrever_dados_voo.max_passageiros > 100 )
                         {
                             repeat = 1;
-                            system("cls");
+                            system("cls || clear");
                             printf("\n     ERRO! O valor inserido nao eh permitido.\n");
                             menu_cadastrarvoo();
                         }
                         else
                         {
-                            system("cls");
+                            system("cls || clear");
                             do
                             {
                                 menu_cadastrarvoo();
@@ -355,7 +323,7 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
                                                 {
                                                     if ( ( (escrever_dados_voo.dia >= data -> tm_mday) && (escrever_dados_voo.ano == data -> tm_year + 1909) && (escrever_dados_voo.mes == data -> tm_mon + 1) ) || (escrever_dados_voo.mes > data -> tm_mon + 1) || (escrever_dados_voo.ano != (data -> tm_year + 1909) ) )
                                                     {
-                                                        system("cls");
+                                                        system("cls || clear");
 
                                                         do
                                                         {
@@ -376,13 +344,13 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
                                                                             fflush(stdout);
                                                                             fwrite(&escrever_dados_voo, sizeof(VOO), 1, add_voo);
                                                                             fclose(add_voo);
-                                                                            system("cls");
+                                                                            system("cls || clear");
                                                                         }
                                                                         else
                                                                         {
                                                                             // Caso alguma das condicões nao forem satisfeitas, a tela sera limpa, aparecera um mensagem de erro, e pedira insercao dos dados novamente.
                                                                             repeat = 1;
-                                                                            system("cls");
+                                                                            system("cls || clear");
                                                                             printf("\n     ERRO! O voo nao pode ser cadastrado neste horario.\n");
                                                                         }
                                                                     }
@@ -390,21 +358,21 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
                                                                     {
                                                                         // O programa não aceitará horários anteriores ao do dia atual, se estiver no mesmo.
                                                                         repeat = 1;
-                                                                        system("cls");
+                                                                        system("cls || clear");
                                                                         printf("\n     ERRO! O voo nao pode ser cadastrado neste horario.\n");
                                                                     }
                                                                 }
                                                                 else
                                                                 {
                                                                     repeat = 1;
-                                                                    system("cls");
+                                                                    system("cls || clear");
                                                                     printf("\n     ERRO! O formato inserido esta incorreto.\n");
                                                                 }
                                                             }
                                                             else
                                                             {
                                                                 repeat = 1;
-                                                                system("cls");
+                                                                system("cls || clear");
                                                                 printf("\n     ERRO! O horario inserido nao existe.\n");
                                                             }
 
@@ -414,7 +382,7 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
                                                     {
                                                         // Este dia ja passou.
                                                         repeat = 1;
-                                                        system("cls");
+                                                        system("cls || clear");
                                                         printf("\n     ERRO! Nao eh possivel cadastrar um voo neste dia.\n");
                                                     }
                                                 }
@@ -422,34 +390,34 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
                                                 {
                                                     // Sao verificados os requisitos comuns de data.
                                                     repeat = 1;
-                                                    system("cls");
+                                                    system("cls || clear");
                                                     printf("\n     ERRO! A data inserida nao eh valida.\n");
                                                 }
                                             }
                                             else
                                             {
                                                 repeat = 1;
-                                                system("cls");
+                                                system("cls || clear");
                                                 printf("\n     ERRO! Nao eh possivel inserir cadastrar um voo nesta data.\n");
                                             }
                                         }
                                         else
                                         {
                                             repeat = 1;
-                                            system("cls");
+                                            system("cls || clear");
                                             printf("\n     ERRO! A data inserida esta incorreta.\n");
                                         }
                                     }
                                     else
                                     {
                                         repeat = 1;
-                                        system("cls");
+                                        system("cls || clear");
                                         printf("\n     ERRO! Nao eh possivel inserir cadastrar um voo neste ano.\n");
                                     }
                                 }
                                 else{
                                     repeat = 1;
-                                    system("cls");
+                                    system("cls || clear");
                                     printf("\n     ERRO! A formato da data inserida esta incorreto.\n");
                                 }
                             }while(repeat == 1);
@@ -460,7 +428,7 @@ void cadastrar_voo( int repeat, int existe, char num_voo[], VOO ler_dados_voo, V
             else
             {
                 repeat = 1;
-                system("cls");
+                system("cls || clear");
                 printf("\n     ERRO! Formato do numero do voo incorreto.\n");
             }
 
@@ -513,7 +481,7 @@ int existe_voo( int existe, char num_voo[] ) // Funcao que verifica a existencia
  return existe;
 }
 
-int qtd_reservas_ativas( char num_voo[] ) // Funcao que retorna a quantidade de reservas ativas
+int qtd_reservas_ativas( char num_voo[] ) // Funcao que retorna a quantidade de reservas ativas em um certo
 {
     FILE    *ler_reservas;
     RESERVA  reservas;
@@ -537,6 +505,25 @@ int qtd_reservas_ativas( char num_voo[] ) // Funcao que retorna a quantidade de 
  return num_pass;
 }
 
+int existe_cpf_voo( int existe, char cpf[], char num_voo[] ) // Funcao que verifica se certo cpf ja possui reserva ativa no voo
+{
+    FILE *ler_reservas;
+    RESERVA reservas;
+
+    ler_reservas = fopen("dados_reservas_GB.bin", "rb");
+    existe = 0;
+
+    while( fread(&reservas, sizeof(reservas), 1, ler_reservas))
+    {
+        if( (strcmp(reservas.cpf, cpf) == 0) && (strcmp(reservas.res_numvoo, num_voo) == 0))
+        {
+            existe = 1;
+            break;
+        }
+    }
+ return existe;
+}
+
 int max_pass( char num_voo[] ) // Funcao que retorna a quantidade maxima de reservas possiveis
 {
     FILE *ler_voos;
@@ -556,25 +543,6 @@ int max_pass( char num_voo[] ) // Funcao que retorna a quantidade maxima de rese
     fclose(ler_voos);
     
  return maxp;
-}
-
-int existe_cpf_voo( int existe, char cpf[], char num_voo[] ) // Funcao que verifica se certo cpf ja possui reserva ativa no voo
-{
-    FILE *ler_reservas;
-    RESERVA reservas;
-
-    ler_reservas = fopen("dados_reservas_GB.bin", "rb");
-    existe = 0;
-
-    while( fread(&reservas, sizeof(reservas), 1, ler_reservas))
-    {
-        if( (strcmp(reservas.cpf, cpf) == 0) && (strcmp(reservas.res_numvoo, num_voo) == 0))
-        {
-            existe = 1;
-            break;
-        }
-    }
- return existe;
 }
 
 int status_voo( char num_voo[] ) // Funcao que retorna o status do voo
@@ -643,7 +611,7 @@ int qtd_voos_total() // Funcao que retorna a quantidade total de voos
  return qtd;
 }
 
-int comparar_data_hora_voo( char num_voo[] ) // Função que retorna se o voo ja decolou ou nao (ja = 0, nao = 1)
+int comparar_data_hora_voo( char num_voo[] ) // Função que retorna se um certo voo ja decolou ou nao (ja = 0, nao = 1)
 {
     FILE  *ler_voos;
     VOO   voos;
@@ -670,7 +638,7 @@ int comparar_data_hora_voo( char num_voo[] ) // Função que retorna se o voo ja
                 // Ou o ano diferente do atual
                 if ( ( (voos.dia >= data -> tm_mday) && (voos.ano == data -> tm_year + 1909) && (voos.mes == data -> tm_mon + 1) ) || ( (voos.mes > data -> tm_mon + 1) && (voos.ano == data -> tm_year + 1909) )  || (voos.ano != (data -> tm_year + 1909) ) ) 
                 {
-                    // Se no mesmo dia, no mesmo mes e no mesmo ano, o horário deve ser maior uma hora que o atual
+                    // Se no mesmo dia, no mesmo mes e no mesmo ano, o horário deve ser maior que o atual
                     if ( ( (voos.dia == data -> tm_mday) && (voos.mes == data -> tm_mon + 1) && (voos.ano == data -> tm_year + 1909) && ((((voos.horas * 60) + voos.minutos ) - ( ((data -> tm_hour) * 60) + (data -> tm_min))) > 0)) || (voos.ano != data -> tm_year + 1909) || ((voos.ano == data -> tm_year + 1909) && (voos.mes > data -> tm_mon + 1)) || ((voos.ano == data -> tm_year + 1909) && (voos.mes == data -> tm_mon + 1) && ((voos.dia > data -> tm_mday))) )
                     {
 
@@ -684,7 +652,39 @@ int comparar_data_hora_voo( char num_voo[] ) // Função que retorna se o voo ja
         }
     }
 
+    fclose(ler_voos);
+
  return data_hora_correta;
+}
+
+int valida_cpf(char cpf[])
+{
+    int correto = 0;
+    int digito_val;
+
+    digito_val = ( ( ( (cpf[0] - '0') * 10) + ( (cpf[1] - '0') * 9) + ( (cpf[2] - '0') * 8) + ( (cpf[4] - '0') * 7) + ( (cpf[5] - '0') * 6) + ( (cpf[6] - '0') * 5) + ( (cpf[8] - '0') * 4) + ( (cpf[9] - '0') * 3) + ( (cpf[10] - '0') * 2) ) % 11);
+    
+    // Verifica o penultimo digito
+    if( ( (digito_val == 0 || digito_val == 1) && cpf[12] == '0') || ( (cpf[12] - '0') == ( 11 - digito_val ) ) ) 
+    {
+        digito_val = ( ( ( (cpf[0] - '0') * 11) + ( (cpf[1] - '0') * 10) + ( (cpf[2] - '0') * 9) + ( (cpf[4] - '0') * 8) + ( (cpf[5] - '0') * 7) + ( (cpf[6] - '0') * 6) + ( (cpf[8] - '0') * 5) + ( (cpf[9] - '0') * 4) + ( (cpf[10] - '0') * 3) + ( (cpf[12] - '0') * 2) ) % 11);
+
+        // Verifica o ultimo digito
+        if( ( (digito_val == 0 || digito_val == 1) && cpf[13] == '0') || ( (cpf[13] - '0') == ( 11 - digito_val ) ) )
+        {
+            correto = 1;
+        }
+        else
+        {
+            correto = 0;
+        }
+    }
+    else
+    {
+        correto = 0;
+    }
+
+ return correto;
 }
 
 // Funcao Cadastrar reserva.
@@ -712,20 +712,22 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
     char cpf[TAM_CPF];
     char nome[TAM_NOME];
     char separador[2];
+    int cpf_valido = 0;
 
     existe = 0;
     repeat = 1;
 
     if(ler_reservas == NULL || add_reserva == NULL || ler_voos == NULL)
     {
-        printf("\n     ERRO! Um dos arquivos nao pode ser aberto.\n");
+        system("cls || clear");
+        printf("\n     ERRO! Nao foi possivel ler os dados.\n");
         exit(1);
     }
     else
     {
         if( qtd_voos_ativos() > 0)
         {
-            system("cls");
+            system("cls || clear");
             do
             {
                 
@@ -747,16 +749,16 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                     if( existe == 1)
                     {
                         repeat = 1;
-                        system("cls");
+                        system("cls || clear");
                         printf("\n     ERRO! O numero de reserva ja existe.\n");
                         menu_cadastrarreserva();
                         system("pause");
-                        system("cls");
+                        system("cls || clear");
                     }
                     else
                     {
                         repeat = 0;
-                        system("cls");
+                        system("cls || clear");
                         fclose(ler_reservas);
                         strcpy(escrever_dados_reserva.num_res, num_res);
 
@@ -779,8 +781,9 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                 if(existe == 0)
                                 {
                                     repeat = 1;
-                                    system("cls");
+                                    system("cls || clear");
                                     printf("\n     ERRO! O voo nao existe.\n");
+
                                 }
                                 else
                                 {
@@ -792,7 +795,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
 
                                         if( data_hora_ok == 1 )
                                         {
-                                            system("cls");
+                                            system("cls || clear");
                                             fclose(ler_voos);
                                             
                                             strcpy(escrever_dados_reserva.res_numvoo, num_voo);
@@ -803,7 +806,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
 
                                             if ( ocup_reservas == ocupmax_voo )
                                             {
-                                                // system("cls");
+                                                system("cls || clear");
                                                 repeat = 0;
                                                 menu_cadastrarreserva();
                                                 printf("\n      ERRO! O voo esta na sua capacidade maxima\n");
@@ -812,7 +815,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                             }
                                             else
                                             {
-                                                system("cls");
+                                                system("cls || clear");
                                                 do
                                                 {
                                                     menu_cadastrarreserva();
@@ -822,19 +825,20 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
 
                                                     if( (cpf[0] - '0') >= 0 && (cpf[0] - '0') <= 9 && (cpf[1] - '0') >= 0 && (cpf[1] - '0') <= 9 && (cpf[2] - '0') >= 0 && (cpf[2] - '0') <= 9 && cpf[3] == '.' && (cpf[4] - '0') >= 0 && (cpf[4] - '0') <= 9 && (cpf[5] - '0') >= 0 && (cpf[5] - '0') <= 9 && (cpf[6] - '0') >= 0 && (cpf[6] - '0') <= 9 && cpf[7] == '.' && (cpf[8] - '0') >= 0 && (cpf[8] - '0') <= 9 && (cpf[9] - '0') >= 0 && (cpf[9] - '0') <= 9 && (cpf[10] - '0') >= 0 && (cpf[10] - '0') <= 9 && cpf[11] == '-' && (cpf[12] - '0') >= 0 && (cpf[12] - '0') <= 9 && (cpf[13] - '0') >= 0 && (cpf[13] - '0') <= 9)
                                                     {
-                                                        if( ( (cpf[0] - '0') + (cpf[1] - '0') + (cpf[2] - '0') + (cpf[4] - '0') + (cpf[5] - '0') + (cpf[6] - '0') + (cpf[8] - '0') + (cpf[9] - '0') + (cpf[10] - '0') + (cpf[12] - '0') + (cpf[13] - '0') ) == 44 )
+                                                        cpf_valido = valida_cpf(cpf);
+                                                        if( cpf_valido )
                                                         {
                                                             existe = existe_cpf_voo( existe, cpf, num_voo );
                                                             
                                                             if(existe == 1)
                                                             {
                                                                 repeat = 1;
-                                                                system("cls");
+                                                                system("cls || clear");
                                                                 printf("\n     ERRO! O CPF ja esta cadastrado no voo.\n");
                                                             }
                                                             else
                                                             {
-                                                                system("cls");
+                                                                system("cls || clear");
                                                                 strcpy(escrever_dados_reserva.cpf, cpf);
                                                                 do
                                                                 {
@@ -853,7 +857,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                                                         if  ( ! ( ( (int)nome[i] >= 65 && (int)nome[i] <= 90 ) || ( (int)nome[i] == 32 ) ) )
                                                                         {
                                                                             repeat = 1;
-                                                                            system("cls");
+                                                                            system("cls || clear");
                                                                             printf("\n     ERRO! O nome inserido nao eh valido.\n");
                                                                             break;
                                                                         }
@@ -861,7 +865,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
 
                                                                     if (repeat == 0)
                                                                     {
-                                                                        system("cls");
+                                                                        system("cls || clear");
                                                                         fclose(ler_reservas);
                                                                         fflush(stdout);
                                                                         existe = 0;
@@ -877,12 +881,12 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                                                         if(existe == 1)
                                                                         {
                                                                             repeat = 1;
-                                                                            system("cls");
+                                                                            system("cls || clear");
                                                                             printf("\n     ERRO! A pessoa ja tem reserva no voo.\n");
                                                                         }
                                                                         else
                                                                         {
-                                                                            system("cls");
+                                                                            system("cls || clear");
                                                                             existe = 0;
                                                                             fclose(ler_reservas);
                                                                             strcpy(escrever_dados_reserva.nome, nome);
@@ -909,7 +913,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
 
                                                                                 if( escrever_dados_reserva.sexo != 'M' || escrever_dados_reserva.sexo != 'F')
                                                                                 {
-                                                                                    system("cls");
+                                                                                    system("cls || clear");
                                                                                     do
                                                                                     {
                                                                                         repeat = 0;
@@ -931,26 +935,26 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                                                                                     fwrite(&escrever_dados_reserva, sizeof(escrever_dados_reserva), 1, add_reserva);
                                                                                                     fclose(add_reserva);
                                                                                                     fclose(ler_reservas);
-                                                                                                    system("cls");
+                                                                                                    system("cls || clear");
                                                                                                 }
                                                                                                 else
                                                                                                 {
                                                                                                     repeat = 1;
-                                                                                                    system("cls");
+                                                                                                    system("cls || clear");
                                                                                                     printf("\n    ERRO! O dia inserido nao existe.\n");
                                                                                                 }
                                                                                             }
                                                                                             else
                                                                                             {
                                                                                                 repeat = 1;
-                                                                                                system("cls");
+                                                                                                system("cls || clear");
                                                                                                 printf("\n     ERRO! O ano inserido nao existe.\n");
                                                                                             }
                                                                                         }
                                                                                         else
                                                                                         {
                                                                                             repeat = 1;
-                                                                                            system("cls");
+                                                                                            system("cls || clear");
                                                                                             printf("\n     ERRO! Formato de data incorreto.\n");
                                                                                         }
 
@@ -959,7 +963,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                                                                 else
                                                                                 {
                                                                                     repeat = 1;
-                                                                                    system("cls");
+                                                                                    system("cls || clear");
                                                                                     printf("\n     ERRO! Insira um caracter valido.\n");
                                                                                 }
 
@@ -973,14 +977,14 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                                         else
                                                         {
                                                             repeat = 1;
-                                                            system("cls");
+                                                            system("cls || clear");
                                                             printf("\n     ERRO! O numero de CPF esta incorreto.\n");
                                                         }
                                                     }
                                                     else
                                                     {
                                                         repeat = 1;
-                                                        system("cls");
+                                                        system("cls || clear");
                                                         printf("\n     ERRO! O formato do CPF esta incorreto.\n");
                                                     }
                                     
@@ -990,6 +994,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                         else
                                         {
                                             repeat = 0;
+                                            system("cls || clear");
                                             printf("\n     ERRO! Este voo ja partiu.\n");
                                             menu_cadastrarreserva();
                                             system("pause");
@@ -998,6 +1003,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                                     else
                                     {
                                         repeat = 0;
+                                        system("cls || clear");
                                         printf("\n     ERRO! O voo esta cancelado.\n");
                                         menu_cadastrarreserva();
                                         system("pause");
@@ -1007,7 +1013,7 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                             else
                             {
                                 repeat = 1;
-                                system("cls");
+                                system("cls || clear");
                                 printf("\n     ERRO! Formato do numero do voo incorreto.\n");
                             }
                         }while(repeat == 1);
@@ -1016,10 +1022,10 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
                 else
                 {
                     repeat = 1;
-                    system("cls");
+                    system("cls || clear");
                     printf("\n     ERRO! Formato do numero de reserva incorreto.\n");
                 }
-                
+
             }while(repeat == 1);
         }
         else
@@ -1028,13 +1034,12 @@ void cadastrar_reserva(int repeat, int existe, char num_res[], char num_voo[], R
             menu_cadastrarreserva();
             system("pause");
         }
-
     }
 
 }
 
 // Funcao Consultar voo.
-void consultar_voo ( int existe, char *num_voo, VOO ler_dados_voo, RESERVA ler_dados_reserva)
+void consultar_voo ( int existe, char num_voo[], VOO ler_dados_voo, RESERVA ler_dados_reserva)
 {
     FILE *ler_voos;
     FILE *ler_dados_res, *ler_reservas;
@@ -1070,11 +1075,11 @@ void consultar_voo ( int existe, char *num_voo, VOO ler_dados_voo, RESERVA ler_d
                 {
                     max_pass = ler_dados_voo.max_passageiros;
 
-                    system("cls");
+                    system("cls || clear");
                     menu_consultar_voo();
                     
                         printf("     ______________________________________\n");
-                        printf("    |              %s                  |\n", num_voo);
+                        printf("    |              %s                |\n", num_voo);
                         printf("    |--------------------------------------|\n");
 
                     if(ler_dados_voo.dia < 10 && ler_dados_voo.mes < 10)
@@ -1111,19 +1116,19 @@ void consultar_voo ( int existe, char *num_voo, VOO ler_dados_voo, RESERVA ler_d
                     {
                         if(ler_dados_voo.horas < 10 && ler_dados_voo.minutos >= 10)
                         {
-                            printf("    | Horario : 0%d:%d                   |\n", ler_dados_voo.horas, ler_dados_voo.minutos);
+                            printf("    | Horario : 0%d:%d                    |\n", ler_dados_voo.horas, ler_dados_voo.minutos);
                         }
                         else
                         {
                             if(ler_dados_voo.horas >= 10 && ler_dados_voo.minutos < 10)
                             {
-                                printf("    | Horario : %d:0%d                   |\n", ler_dados_voo.horas, ler_dados_voo.minutos);
+                                printf("    | Horario : %d:0%d                    |\n", ler_dados_voo.horas, ler_dados_voo.minutos);
                             }
                             else
                             {
                                 if(ler_dados_voo.horas >= 10 && ler_dados_voo.minutos >= 10)
                                 {
-                                    printf("    | Horario : %d:%d                    |\n", ler_dados_voo.horas, ler_dados_voo.minutos);
+                                    printf("    | Horario : %d:%d                      |\n", ler_dados_voo.horas, ler_dados_voo.minutos);
                                 }
                             }
                         }
@@ -1158,7 +1163,7 @@ void consultar_voo ( int existe, char *num_voo, VOO ler_dados_voo, RESERVA ler_d
                     }
                     else
                     {
-                        printf("     Nao existem passageiros resistrados neste voo.\n\n");
+                        printf("     Nao existem passageiros registrados ou ativos neste voo.\n\n");
                         system("pause");
                     }
                 }
@@ -1167,6 +1172,7 @@ void consultar_voo ( int existe, char *num_voo, VOO ler_dados_voo, RESERVA ler_d
         }
         else
         {
+            system("cls || clear");
             printf("\n     ERRO! Voo nao encontrado.\n");
             menu_consultar_voo();
             system("pause");
@@ -1178,7 +1184,8 @@ void consultar_voo ( int existe, char *num_voo, VOO ler_dados_voo, RESERVA ler_d
     }
     else
     {
-        printf("\n     Nao existem voos para serem consultados\n");
+        system("cls || clear");
+        printf("\n     ERRO! Nao existem voos para serem consultados\n");
         menu_consultar_voo();
         system("pause");
     }
@@ -1229,7 +1236,7 @@ void consultar_reserva( int existe, RESERVA ler_dados_reserva )
         printf("                 ");scanf("%[^\n]s", num_res);
 
         strupr(num_res);
-        system("cls");
+        system("cls || clear");
 
         existe = existe_reserva ( existe, num_res );
 
@@ -1284,7 +1291,7 @@ void consultar_reserva( int existe, RESERVA ler_dados_reserva )
                             }
                             else
                             {
-                                printf("     DATA NASC. :    %d/%d/%d|\n\n", ler_dados_reserva.nasc_dia, ler_dados_reserva.nasc_mes, ler_dados_reserva.nasc_ano);
+                                printf("     DATA NASC. :    %d/%d/%d\n\n", ler_dados_reserva.nasc_dia, ler_dados_reserva.nasc_mes, ler_dados_reserva.nasc_ano);
                             }
                         }
                     }
@@ -1297,19 +1304,19 @@ void consultar_reserva( int existe, RESERVA ler_dados_reserva )
         }
         else
         {
-            printf("\n     ERRO! A RESERVA NAO EXISTE.\n");
+            system("cls || clear");
+            printf("\n     ERRO! A reserva nao existe.\n");
             menu_cadastrarreserva();
             system("pause");
         }
     }
     else
     {
-        system("cls");
+        system("cls || clear");
         printf("\n     Nao existem reservas a serem consultadas.\n");
         menu_cadastrarreserva();
         system("pause");
     }
-
  
 }
 
@@ -1335,7 +1342,7 @@ int existe_passageiro( int existe, char nome_pass[], RESERVA ler_dados_reserva )
  return existe;
 }
 
-void escrever_reservas_nominal( char nome_pass[] ) // Escreve cada reserva do passageiro
+void escrever_reservas( char nome_pass[] ) // Escreve cada reserva do passageiro
 {
     FILE *ler_reservas;
     RESERVA reservas;
@@ -1396,77 +1403,12 @@ void escrever_reservas_nominal( char nome_pass[] ) // Escreve cada reserva do pa
     }
     else
     {
-        printf("     ERRO! Os dados nao puderam ser lidos.\n");
+        system("cls || clear");
+        printf("     ERRO! Nao foi possivel ler os dados.\n");
+        system("pause");
     }
 
 }
-
-/*  void escrever_reservas_cpf( char cpf[] )
-    {
-        FILE *ler_reservas;
-        RESERVA reservas;
-
-        ler_reservas = fopen( "dados_reservas_GB.bin", "rb" );
-
-        if( ler_reservas != NULL )
-        {
-            while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
-            {
-                if( strcmp( reservas.cpf, cpf ) == 0 )
-                {   
-                    printf("     Numero da reserva:  %s\n", reservas.num_res);
-                    if( reservas.status_res == 1 )
-                    {
-                        printf("     Status da reserva:  ATIVA\n\n");
-                    }
-                    else
-                    {
-                        printf("     Status da reserva:  CANCELADA\n\n");
-                    }
-                    
-                    printf("     Numero do voo:  %s\n", reservas.res_numvoo);
-
-
-                    
-                    if( reservas.sexo == 'F')
-                    {
-                        printf("     SEXO:   FEMININO\n");
-                    }
-                    else
-                    {
-                        printf("     SEXO:   MASCULINO\n");
-                    }
-
-                    if( reservas.nasc_dia < 10 )
-                    {
-                        printf("     Data de nasc.: 0%d/", reservas.nasc_dia);
-                    }
-                    else
-                    {
-                        printf("     Data de nasc.: %d/", reservas.nasc_dia);
-                    }
-
-                    if( reservas.nasc_mes < 10 )
-                    {
-                        printf("0%d/", reservas.nasc_mes);
-                    }
-                    else
-                    {
-                        printf("%d/", reservas.nasc_mes);
-                    }
-
-                    printf("%d\n", reservas.nasc_ano);
-
-
-                }
-            }
-        }
-        else
-        {
-
-        }
-    }
-*/    
 
 void consultar_passageiro_nominal( int existe, RESERVA ler_dados_reserva) // Consulta o passageiro pelo seu nome 
 {
@@ -1485,17 +1427,18 @@ void consultar_passageiro_nominal( int existe, RESERVA ler_dados_reserva) // Con
     
     if(existe == 1)
     {
-        system("cls");
+        system("cls || clear");
         menu_consultar_passageiro1();
         printf("     ~ %s ~\n", nome_pass);
         printf("   ------------------------------------------\n");
 
-        escrever_reservas_nominal(nome_pass);
+        escrever_reservas(nome_pass);
 
         system("pause");
     }
     else
     {
+        system("cls || clear");
         printf("\n     ERRO! Pessoa nao encontrada.\n");
         menu_consultar_passageiro1();
         system("pause");
@@ -1503,67 +1446,17 @@ void consultar_passageiro_nominal( int existe, RESERVA ler_dados_reserva) // Con
     
 }
 
-/*  void consultar_passageiro_cpf( int existe )
-    {
-        FILE *ler_voos, *ler_reservas;
-
-        RESERVA reservas;
-
-        char cpf[TAM_CPF];
-
-        ler_reservas = fopen("dados_voos_GB.bin", "rb");
-
-        ler_voos = fopen("dados_voos_GB.bin", "rb");
-
-        if( ler_voos != NULL && ler_reservas != NULL)
-            menu_consultar_passageiro1();
-
-            printf("   Insira o CPF do passageiro (XXX.XXX.XXX-XX):\n");
-            printf("                 "); scanf(" %[^\n]s", cpf);
-
-            while( fread(&reservas, sizeof(reservas), 1, ler_reservas ))
-            {
-                if( strcmp(reservas.cpf, cpf) == 0 )
-                {
-                    existe = 1;
-                    break;
-                }
-            }
-            
-            if(existe == 1)
-            {
-                menu_consultar_passageiro1();
-                printf("     ~ %s ~\n", cpf);
-
-                escrever_reservas_cpf( cpf );
-
-                system("pause");
-            }
-            else
-            {
-                printf("\n     ERRO! Pessoa nao encontrada.\n");
-                menu_consultar_passageiro1();
-                system("pause");
-            }
-
-        printf("\n     ERRO! Algum arquivo nao foi passivel de leitura.\n");
-        menu_consultar_passageiro1();
-        system("pause");
-    }
-*/
-
 // Funcao Consultar passageiro.
-void consultar_passageiro(int repeat, int existe, RESERVA ler_dados_reserva)
+void consultar_passageiro( int existe, RESERVA ler_dados_reserva)
 {
     int existem_passageiros;
-    char opcao;
 
     existem_passageiros = qtd_reservas_total();
 
     if( existem_passageiros > 0 )
     {
 
-        system("cls");
+        system("cls || clear");
         consultar_passageiro_nominal( existe, ler_dados_reserva );
     }
     else
@@ -1578,30 +1471,30 @@ void consultar_passageiro(int repeat, int existe, RESERVA ler_dados_reserva)
 // Funcao Cancelar voo.
 void cancelar_voo(int existe, char num_voo[])
 {
-    FILE   *ler_reservas, *ler_voos;
-    FILE   *reescrever_reservas, *reescrever_voos;
-
+    FILE   *ler_voos, *ler_reservas;
+    FILE   *reescrever_voos, *reescrever_reservas;
     VOO     voos;
     RESERVA reservas;
 
     int data_hora_ok = 0;
     int existem_voos = 0;
+    
+    existem_voos = qtd_voos_ativos();
 
-    existem_voos = qtd_voos_total();
-
+    existe = 0;
     if( existem_voos > 0 )
     {
-        ler_voos = fopen("dados_voos_GB.bin", "r+b");
+        ler_voos = fopen( "dados_voos_GB.bin", "r+b" );
         ler_reservas = fopen( "dados_reservas_GB.bin", "r+b" );
 
-        reescrever_voos = fopen("tmpdados_voos_GB.bin", "ab");
-        reescrever_reservas = fopen( "tmpdados_reservas_GB.bin", "ab" );
+        reescrever_voos = fopen( "tmpdados_voos_GB.bin", "wb" );
+        reescrever_reservas = fopen( "tmpdados_reservas_GB.bin", "wb" );
 
-        if( ler_reservas != NULL && reescrever_reservas != NULL && ler_voos != NULL && reescrever_voos != NULL )
+        if( ler_voos != NULL && ler_reservas != NULL && reescrever_voos != NULL && reescrever_reservas != NULL )
         {
             menu_cancelarvoo();
             fflush(stdin);
-            printf("           Qual voo deseja cancelar?\n");
+            printf("      Qual voo deseja cancelar? (JEB-XXXX)\n");
             printf("                  ");scanf("%[^\n]s", num_voo);
 
             strupr(num_voo);
@@ -1614,27 +1507,10 @@ void cancelar_voo(int existe, char num_voo[])
 
                 if( data_hora_ok == 1 )
                 {
-                    if( qtd_reservas_total() > 0 )
-                    {
-                        while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
-                        {
-                            if( strcmp( reservas.res_numvoo, num_voo ) == 0 )
-                            {
-                                reservas.status_res = 0; // O status é alterado e reescrito em outro arquivo
-                                fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
-                            }
-                            else
-                            {
-                                fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
-                            }
-                        }
-                    }
-
                     while( fread( &voos, sizeof(voos), 1, ler_voos ) )
                     {
                         if( strcmp( voos.num_voo, num_voo ) == 0 )
                         {
-                            fflush(stdin);
                             voos.status_voo = 0;
                             fwrite( &voos, sizeof(voos), 1, reescrever_voos );
                         }
@@ -1643,139 +1519,174 @@ void cancelar_voo(int existe, char num_voo[])
                             fwrite( &voos, sizeof(voos), 1, reescrever_voos );
                         }
                     }
-        
-                    fclose( ler_reservas );
-                    fclose( reescrever_reservas );
 
-                    printf("apagar dados_reserva_GB.bin = %d", remove("dados_reservas_GB.bin") );
-                    system("pause");
-                    
-                    printf("renomear reservas = %d", rename("tmpdados_reservas_GB.bin", "dados_reservas_GB.bin") );
-                    system("pause");
-
-                    fclose( ler_voos );
-                    fclose( reescrever_voos );
-
-                    printf("apagar dados_voo_GB.bin = %d", remove("dados_voos_GB.bin") );
-                    system("pause");
-
-                    printf("renomear voos = %d", rename("tmpdados_voos_GB.bin", "dados_voos_GB.bin") );
-                    system("pause");
-                    
-
-                }
-                else
-                {
-                    printf("\n     ERRO! Este voo ja partiu.\n");
-                    menu_cancelarvoo();
-                    system("pause");
-                }
-
-            }
-            else
-            {
-                printf("\n     ERRO! O voo nao existe.\n");
-                menu_cancelarvoo();
-                system("pause");
-            }
-
-        }
-        else
-        {
-            printf("\n     ERRO! Algum arquivo nao foi passivel de leitura.\n");
-            menu_cancelarvoo();
-            system("pause");
-        }
-    }
-    else
-    {
-        printf("\n     ERRO! Nao existem voos cadastrados.\n");
-        menu_cancelarvoo();
-        system("pause");
-    }
-
-}
-
-
-// Funcao Cancelar reserva.
-int cancelar_reserva( int existe )
-{
-    FILE    *ler_reservas;
-    FILE    *reescrever_reservas;
-    RESERVA reservas;
-
-    int  existem_reservas = 0;
-    int  existem_voos = 0;
-    char num_reserva[TAM_NUMRES];
-
-    ler_reservas = fopen( "dados_reservas_GB.bin", "r+b" );
-
-    reescrever_reservas = fopen( "tmpdados_reservas_GB.bin", "ab" );
-
-    if( ler_reservas != NULL && reescrever_reservas != NULL )
-    {
-        existem_reservas = qtd_reservas_total();
-
-        if( existem_reservas > 0 )
-        {
-            existem_voos = qtd_voos_total();
-
-            if ( existem_voos > 0)
-            {
-                menu_cancelarreserva();
-                fflush(stdin);
-                printf("          Qual reserva deseja cancelar?\n");
-                printf("                 ");scanf("%[^\n]s", num_reserva);
-
-                strupr(num_reserva);
-
-                existe = existe_reserva( existe, num_reserva );
-
-                if( existe == 1 )
-                {
-
-                    while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
+                    if( qtd_reservas_total() > 0 )
                     {
-                        if( strcmp( reservas.num_res, num_reserva ) == 0 )
+                        while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
                         {
-                            if( reservas.status_res == 1 )
+                            if( strcmp( reservas.res_numvoo, num_voo ) == 0 )
                             {
-                                reservas.status_res = 0; // O status é alterado e reescrito em outro arquivo
+                                reservas.status_res = 0;
                                 fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
                             }
                             else
                             {
                                 fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
-                                printf("A reserva ja foi cancelada\n");
-                                menu_cancelarreserva();
-                                system("pause");
                             }
                         }
-                        else
-                        {
-                            if( strcmp( reservas.num_res, num_reserva ) != 0 )
-                            {
-                                fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
-                            }
-                        }
-                        
                     }
 
-                    printf("1\n");
+                    fclose( ler_voos );
                     fclose( ler_reservas );
-                    system("pause");  
-                    printf("2\n");
+                    fclose( reescrever_voos );
                     fclose( reescrever_reservas );
-                    system("pause");                  
-                    printf("3\n");
-                    remove("dados_reservas_GB.bin");
-                    system("pause");
-                    printf("4\n");
-                    rename("tmpdados_reservas_GB.bin", "dados_reservas_GB.bin");
-                    system("pause");
+
+                    ler_voos = fopen( "tmpdados_voos_GB.bin", "rb" );
+                    ler_reservas = fopen( "tmpdados_reservas_GB.bin", "rb" );
+
+                    reescrever_voos = fopen( "dados_voos_GB.bin", "wb" );
+                    reescrever_reservas = fopen( "dados_reservas_GB.bin", "wb" );
+
+                    while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
+                    {
+                        fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
+                    }
+
+                    while( fread( &voos, sizeof(voos), 1, ler_voos ) )
+                    {
+                        fwrite( &voos, sizeof(voos), 1, reescrever_voos );
+                    }
+
+                    fclose( ler_voos );
+                    fclose( ler_reservas );
+                    fclose( reescrever_voos );
+                    fclose( reescrever_reservas );
+
+                    remove("tmpdados_voos_GB.bin");
+                    remove("tmpdados_reservas_GB.bin");
+
                 }
                 else
                 {
+                    system("cls || clear");
+                    printf("\n     ERRO! Este voo ja partiu.\n");
+                    menu_cancelarvoo();
+                    system("pause");
+                }
+            }
+            else
+            {
+                system("cls || clear");
+                printf("\n     ERRO! O voo nao existe.\n");
+                menu_excluirvoo();
+                system("pause");
+            }
+        }
+        else
+        {
+            system("cls || clear");
+            printf("\n     ERRO! Nao foi possivel ler os dados.\n");
+            menu_excluirvoo();
+            system("pause");
+        }
+    }
+    else
+    {
+        system("cls || clear");
+        printf("\n     ERRO! Nao existem voos cadastrados.\n");
+        menu_excluirvoo();
+        system("pause");
+    }
+}
+
+int num_reservas_ativas()
+{
+    FILE *ler_reservas;
+    RESERVA reservas;
+
+    int num_reservas = 0;
+
+    ler_reservas = fopen("dados_reservas_GB.bin", "rb");
+
+    while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
+    {
+        if(reservas.status_res == 1)
+        {
+            num_reservas++;
+        }
+    }
+
+ return num_reservas;
+}
+
+// Funcao Cancelar reserva.
+int cancelar_reserva( int existe, char num_voo[], char num_res[] )
+{
+    FILE *ler_reservas;
+    FILE *reescrever_reservas;
+
+    RESERVA reservas;
+
+    int  existem_reservas = 0;
+    int  existem_voos = 0;
+
+    ler_reservas = fopen( "dados_reservas_GB.bin", "rb" );
+    reescrever_reservas = fopen( "tmpdados_reservas_GB.bin", "wb" );
+
+    if( ler_reservas != NULL && reescrever_reservas != NULL )
+    {
+        existem_reservas = num_reservas_ativas();
+
+        if( existem_reservas > 0 )
+        {
+            existem_voos = qtd_voos_ativos();
+
+            if( existem_voos > 0 )
+            {
+                menu_cancelarreserva();
+                fflush(stdin);
+                printf("    Qual reserva deseja cancelar? (GB-XXXXXX)\n");
+                printf("                 ");scanf("%[^\n]s", num_res);
+
+                strupr(num_res);
+
+                existe = existe_reserva( existe, num_res );
+
+                if( existe == 1 )
+                {
+                    while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
+                    {
+                        if( strcmp( reservas.res_numvoo, num_voo ) == 0 )
+                        {
+                            reservas.status_res = 0;
+                            fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
+                        }
+                        else
+                        {
+                            fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
+                        }
+                    }
+
+                    fclose( ler_reservas );
+                    fclose( reescrever_reservas );
+
+                    ler_reservas = fopen( "tmpdados_reservas_GB.bin", "rb" );
+                    reescrever_reservas = fopen( "dados_reservas_GB.bin", "wb" );
+
+                    while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
+                    {
+                        fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
+                    }
+
+                    fclose( ler_reservas );
+                    fclose( reescrever_reservas );
+
+                    remove("tmpdados_reservas_GB.bin");
+
+                }
+                else
+                {
+                    system("cls || clear");
                     printf("\n     ERRO! A reserva nao existe.\n");
                     menu_cancelarreserva();
                     system("pause");
@@ -1783,25 +1694,28 @@ int cancelar_reserva( int existe )
             }
             else
             {
-                printf("\n     ERRO! Nao existem voos cadastrados.\n");
+                system("cls || clear");
+                printf("\n     ERRO! Nao existem voos cadastrados ou ativos.\n");
                 menu_cancelarreserva();
                 system("pause");
             }
         }
         else
         {
-            printf("\n     ERRO! Nao existem reservas cadastradas.\n");
+            system("cls || clear");
+            printf("\n     ERRO! Nao existem reservas cadastradas ou ativas.\n");
             menu_cancelarreserva();
             system("pause");
         }
-
     }
     else
     {
-        printf("\n     ERRO! Algum arquivo nao foi passivel de leitura.\n");
+        system("cls || clear");
+        printf("\n     ERRO! Nao foi possivel ler os dados.\n");
         menu_cancelarreserva();
         system("pause");
     }
+    
 
  return 0;
 }
@@ -1818,22 +1732,22 @@ void excluir_voo( int existe )
     int existem_voos = 0;
     char num_voo[TAM_NUMVOO];
     
-    existem_voos = qtd_voos_ativos();
+    existem_voos = qtd_voos_total();
 
     existe = 0;
     if( existem_voos > 0 )
     {
         ler_voos = fopen( "dados_voos_GB.bin", "r+b" );
-        ler_reservas = fopen( "dados_reservas_GB.bin", "r+b" );
+        reescrever_voos = fopen( "tmpdados_voos_GB.bin", "wb" );
 
-        reescrever_voos = fopen( "tmpdados_voos_GB.bin", "ab" );
-        reescrever_reservas = fopen( "tmpdados_reservas_GB.bin", "ab" );
+        reescrever_reservas = fopen( "tmpdados_reservas_GB.bin", "wb" );
+        ler_reservas = fopen( "dados_reservas_GB.bin", "r+b" );
 
         if( ler_voos != NULL && ler_reservas != NULL && reescrever_voos != NULL && reescrever_reservas != NULL )
         {
             menu_excluirvoo();
             fflush(stdin);
-            printf("Qual voo deseja excluir?\n");
+            printf("       Qual voo deseja excluir? (JEB-XXXX)\n");
             printf("                  ");scanf("%[^\n]s", num_voo);
 
             strupr(num_voo);
@@ -1863,15 +1777,34 @@ void excluir_voo( int existe )
                 fclose( reescrever_voos );
                 fclose( reescrever_reservas );
 
-                remove("dados_voos_GB.bin");
-                remove("dados_reservas_GB.bin");
+                ler_voos = fopen( "tmpdados_voos_GB.bin", "rb" );
+                reescrever_voos = fopen( "dados_voos_GB.bin", "wb" );
 
-                rename("tmpdados_voos_GB.bin", "dados_voos_GB.bin");
-                rename("tmpdados_reservas_GB.bin", "dados_reservas_GB.bin");
+                ler_reservas = fopen( "tmpdados_reservas_GB.bin", "rb" );
+                reescrever_reservas = fopen( "dados_reservas_GB.bin", "wb" );
 
+                while( fread( &reservas, sizeof(reservas), 1, ler_reservas ) )
+                {
+                    fwrite( &reservas, sizeof(reservas), 1, reescrever_reservas );
+                }
+
+                while( fread( &voos, sizeof(voos), 1, ler_voos ) )
+                {
+                    fwrite( &voos, sizeof(voos), 1, reescrever_voos );
+                }
+
+                fclose( ler_voos );
+                fclose( ler_reservas );
+                fclose( reescrever_voos );
+                fclose( reescrever_reservas );
+
+                remove("tmpdados_voos_GB.bin");
+                remove("tmpdados_reservas_GB.bin");
+                
             }
             else
             {
+                system("cls || clear");
                 printf("\n     ERRO! O voo nao existe.\n");
                 menu_excluirvoo();
                 system("pause");
@@ -1879,13 +1812,15 @@ void excluir_voo( int existe )
         }
         else
         {
-            printf("\n     ERRO! Algum arquivo nao foi passivel de leitura.\n");
+            system("cls || clear");
+            printf("\n     ERRO! Nao foi possivel ler os dados.\n");
             menu_excluirvoo();
             system("pause");
         }
     }
     else
     {
+        system("cls || clear");
         printf("\n     ERRO! Nao existem voos cadastrados.\n");
         menu_excluirvoo();
         system("pause");
@@ -1904,9 +1839,7 @@ int main()
     char num_menu;
     char num_voo[TAM_NUMVOO];
     char num_res[TAM_NUMRES];
-    char nome[TAM_NOME];
     
-
     do
     {
         num_menu = menu(repeat);
@@ -1924,42 +1857,42 @@ int main()
                     case '1':
                         cadastrar_voo ( repeat, existe, num_voo, ler_dados_voo, escrever_dados_voo );
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                     case '2':
                         cadastrar_reserva ( repeat, existe, num_res, num_voo, ler_dados_reserva, escrever_dados_reserva );
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                     case '3':
                         consultar_voo ( existe, num_voo, ler_dados_voo, ler_dados_reserva );
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                     case '4':
                         consultar_reserva ( existe, ler_dados_reserva );
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                     case '5':
-                        consultar_passageiro ( repeat, existe, ler_dados_reserva );
+                        consultar_passageiro ( existe, ler_dados_reserva );
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                     case '6':
                         cancelar_voo ( existe, num_voo);
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                     case '7':
-                        cancelar_reserva ( existe );
+                        cancelar_reserva ( existe, num_voo, num_res );
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                     case '8':
                         excluir_voo ( existe );
                         repeat = 1;
-                        system ("cls");
+                        system ("cls || clear");
                         break;
                 }
             }

@@ -23,7 +23,7 @@ int main()
 
     FILE *ler_voo;
 
-    ler_voo = fopen("dados_voos_GB.bin", "rb");
+    ler_voo = fopen("dados_voos_GB.bin", "r+b");
 
     while( fread( &dados_voo, sizeof( dados_voo ), 1,  ler_voo ) )
     {
