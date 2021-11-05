@@ -1483,7 +1483,7 @@ void consultar_passageiro( int existe, RESERVA ler_dados_reserva)
 
 int voo_ativo(num_voo)
 {
-    FILE ler_voos;
+    FILE *ler_voos;
     VOO voos;
 
     int status;
@@ -1608,7 +1608,7 @@ void cancelar_voo(int existe, char num_voo[])
                         menu_cancelarvoo();
                         printf("           Voo cancelado com sucesso!\n");
                         system("pause");
-                        
+
                     }
                     else
                     {
